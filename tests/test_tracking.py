@@ -15,5 +15,9 @@ class TestTracking(unittest.TestCase):
         info = tracking.fetch_status('000000000000')
         self.assertTrue(info is None or info.status == 'Unknown')
 
+    def test_fetch_status_invalid(self):
+        self.assertIsNone(tracking.fetch_status('invalid'))
+
+
 if __name__ == '__main__':
     unittest.main()
