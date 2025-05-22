@@ -23,10 +23,14 @@ def detect_courier(tracking_number: str) -> Optional[str]:
 
 
 def parse_tracking_numbers(text: str) -> List[str]:
+
+    """Parse user input into a list of tracking numbers."""
+
     """Return a list of tracking numbers from a string.
 
     Numbers can be separated by newlines or commas.
     """
+
     numbers: List[str] = []
     for line in text.splitlines():
         for token in line.split(','):
@@ -45,7 +49,7 @@ _COURIER_LINKS = {
 
 
 def get_courier_link(courier: str, tracking_number: str) -> Optional[str]:
-    """Return a direct link to the courier's tracking page."""
+    """Return a URL to the courier's website for the given number."""
     template = _COURIER_LINKS.get(courier)
     if not template:
         return None

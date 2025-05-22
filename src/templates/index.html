@@ -17,11 +17,14 @@
         <textarea name="tracking_numbers" rows="5" placeholder="Enter tracking numbers, one per line or comma separated" required></textarea>
         <button type="submit">Track</button>
     </form>
-
-    {% if error %}
-    <p style="color: red;">{{ error }}</p>
+    {% if errors %}
+    <ul>
+    {% for e in errors %}
+        <li style="color: red;">{{ e }}</li>
+    {% endfor %}
+    </ul>
     {% endif %}
-    {% if result %}
+    {% if results %}
 
     <table>
         <thead>
