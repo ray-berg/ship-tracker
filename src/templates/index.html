@@ -17,11 +17,17 @@
         <input type="text" name="tracking_number" placeholder="Enter tracking number" required>
         <button type="submit">Track</button>
     </form>
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
     {% if result %}
     <table>
         <tr><th>Courier</th><td>{{ result.courier }}</td></tr>
         <tr><th>Status</th><td>{{ result.status }}</td></tr>
     </table>
     {% endif %}
+    <footer style="margin-top:20px; text-align:center;">
+        Version {{ version }}
+    </footer>
 </body>
 </html>

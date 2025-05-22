@@ -15,5 +15,14 @@ class TestTracking(unittest.TestCase):
         info = tracking.fetch_status('000000000000')
         self.assertTrue(info is None or info.status == 'Unknown')
 
+    def test_fetch_status_invalid(self):
+        self.assertIsNone(tracking.fetch_status('invalid'))
+
+    def test_app_version_constant(self):
+        with open('src/app.py') as f:
+            contents = f.read()
+        self.assertIn("APP_VERSION = \"v0.0.1\"", contents)
+
+
 if __name__ == '__main__':
     unittest.main()
