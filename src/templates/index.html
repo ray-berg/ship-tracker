@@ -17,6 +17,7 @@
         <textarea name="tracking_numbers" rows="5" placeholder="Enter tracking numbers, one per line or comma separated" required></textarea>
         <button type="submit">Track</button>
     </form>
+
     {% if errors %}
     <ul>
     {% for e in errors %}
@@ -25,6 +26,12 @@
     </ul>
     {% endif %}
     {% if results %}
+
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    {% if result %}
+
     <table>
         <thead>
             <tr><th>Tracking #</th><th>Courier</th><th>Link</th></tr>
