@@ -19,6 +19,12 @@ class TestTracking(unittest.TestCase):
         self.assertIsNone(tracking.fetch_status('invalid'))
 
 
+    def test_app_version_constant(self):
+        with open('src/app.py') as f:
+            contents = f.read()
+        self.assertIn("APP_VERSION = \"v0.0.1\"", contents)
+
+
     def test_parse_tracking_numbers(self):
         text = '1Z9999999999999999\n9400110200881111111111,123456789012'
         numbers = tracking.parse_tracking_numbers(text)
@@ -31,6 +37,7 @@ class TestTracking(unittest.TestCase):
     def test_get_courier_link(self):
         link = tracking.get_courier_link('UPS', '1Z9999999999999999')
         self.assertTrue('1Z9999999999999999' in link)
+
 
 
 
